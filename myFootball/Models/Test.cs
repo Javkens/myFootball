@@ -9,7 +9,7 @@ namespace myFootball.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int IDKindOfTest { get; set; }
+        public int IdKindOfTest { get; set; }
         public string Date { get; set; }
         public int IDGroup { get; set; }
         public string Data { get; set; } //aoraiwec tutaj tablica z danymi testów?
@@ -19,7 +19,7 @@ namespace myFootball.Models
             Id = _id;
             //temp (use default values) in futere this will be getting data from database
             Name = "Jablonka";
-            IDKindOfTest = 2;
+            IdKindOfTest = 2;
             Date = "2017-09-12";
             IDGroup = 4;
 
