@@ -17,7 +17,7 @@ namespace myFootball.Models
         {
             Id = _id;
             //rest of parameters should be getted from database. actually default
-            Name = "Artur Orawiec"
+            Name = "Artur Orawiec";
             Birthdate = "1994-08-12";
             Address = "Lipnica Wielka";
 
