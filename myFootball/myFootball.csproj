@@ -209,6 +209,10 @@
     <Compile Include="Migrations\201711012306557_AddResultTable.Designer.cs">
       <DependentUpon>201711012306557_AddResultTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711021313542_RefactoringCode.cs" />
+    <Compile Include="Migrations\201711021313542_RefactoringCode.Designer.cs">
+      <DependentUpon>201711021313542_RefactoringCode.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -313,6 +317,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711012306557_AddResultTable.resx">
       <DependentUpon>201711012306557_AddResultTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711021313542_RefactoringCode.resx">
+      <DependentUpon>201711021313542_RefactoringCode.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
