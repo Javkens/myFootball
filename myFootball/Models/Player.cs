@@ -23,24 +23,28 @@ namespace myFootball.Models
         [Display(Name = "Adres")]
         public string Address { get; set; }
 
+        //public Player()
+        //{
 
-        public Player (int _id)
-        {
-            Id = _id;
-            //rest of parameters should be getted from database. actually default
-            Name = "Artur Orawiec";
-            Birthday = "1994-08-12";
-            Address = "Lipnica Wielka";
+        //}
+        //aorawiec: najprowdopodbniej usunac ten kod
+        //public Player (int _id)
+        //{
+        //    Id = _id;
+        //    //rest of parameters should be getted from database. actually default
+        //    Name = "Artur Orawiec";
+        //    Birthday = "1994-08-12";
+        //    Address = "Lipnica Wielka";
 
-        }
-        public Player(int _id, string _name, string _birth, string _address)
-        {
+        //}
+        //public Player(int _id, string _name, string _birth, string _address)
+        //{
 
-            Id = _id;
-            Name = _name;
-            Birthday = _birth;
-            Address = _address;
+        //    Id = _id;
+        //    Name = _name;
+        //    Birthday = _birth;
+        //    Address = _address;
 
-        }
+        //}
     }
 }

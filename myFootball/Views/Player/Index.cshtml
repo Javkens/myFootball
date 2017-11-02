@@ -1,0 +1,35 @@
+﻿@model IEnumerable<myFootball.Models.Player>
+
+@{
+    ViewBag.Title = "MainView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Zawodnicy</h2>
+
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Imię i nazwisko</th>
+            <th>Data urodzenia</th>
+            <th>Miejsce zamieszkania</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var player in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(player.Name, player.Id.ToString(), "Player")</td>
+                <td>@player.Birthday</td>
+                <td>@player.Address</td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+
+<p>
+    @Html.ActionLink("Dodaj zawodnika", "New", "Player", null, new { @class = "btn btn-primary" })
+</p>

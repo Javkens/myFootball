@@ -20,46 +20,39 @@ namespace myFootball.Controllers
         }
 
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Route("player/save")]
+        public ActionResult Save(Player player)
+        {
+            _context.Players.Add(player);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+            //aorawiec: add information about succesfully added new player
+        }
+
         // GET: Player
         public ActionResult Index()
         {
-            return View();
+            var Players = _context.Players.ToList();
+            return View(Players);
         }
-
-
-        [Route("player/mainview")]
-        public ActionResult MainView()
-        {
-            var MainView = new Player(0); //aorawiec: tutaj bedzie trzeba zainicjalizować tylko tablicę ze wszystkimi testami. nie wiem czy nie utworzyc do tego osobnej klasy
-            return View(MainView);
-
-        }
-
 
         // GET: Test/id
         [Route("player/{id}")]
         public ActionResult Player(int id)
         {
-            var player = new Player(id);
+            var player = _context.Players.FirstOrDefault(c => c.Id == id);
             return View(player);
         }
 
         [Route("player/new")]
         public ActionResult New()
         {
+            var player = new Player();
+            return View(player);
 
-            return View();
-
-        }
-
-        [HttpPost]
-        public ActionResult Create(Player player)
-        {
-            _context.Players.Add(player);
-            _context.SaveChanges();
-
-            return RedirectToAction("MainView", "Player");
-            //aorawiec: add information about succesfully added new player
         }
     }
 }

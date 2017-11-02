@@ -5,28 +5,32 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>New Player</h2>
+<h2>Wpisz dane nowego zawodnika i dodaj go do bazy.</h2>
 
+<p>
+    @using (Html.BeginForm("Save", "Player"))
+    {
 
-@using (Html.BeginForm("Create", "Player"))
-{
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Name)
-        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Birthday)
+            @Html.TextBoxFor(m => m.Birthday, new { @class = "form-control" })
+        </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Birthday)
-        @Html.TextBoxFor(m => m.Birthday, new { @class = "form-control" })
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Address)
+            @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Address)
-        @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+            @* aorawiec: add handle to add image for player *@
+        </div>
 
-        @* aorawiec: add handle to add image for player *@
-    </div>
+        @Html.HiddenFor(m => m.Id)
+        @Html.AntiForgeryToken()
 
-    <button type="submit" class="btn btn-primary">Add new player</button>
-}
+        <button type="submit" class="btn btn-primary">Dodaj nowego zawodnika</button>
+    }
+</p>
