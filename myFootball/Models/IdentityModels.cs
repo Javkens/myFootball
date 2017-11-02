@@ -22,6 +22,8 @@ namespace myFootball.Models
     {
         public DbSet<Player> Players { get; set; }
         public DbSet<Result> Results { get; set; }
+
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

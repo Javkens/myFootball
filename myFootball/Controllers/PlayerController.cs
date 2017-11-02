@@ -10,6 +10,16 @@ namespace myFootball.Controllers
 {
     public class PlayerController : Controller
     {
+
+        private ApplicationDbContext _context;
+
+        public PlayerController()
+        {
+            _context = new ApplicationDbContext();
+
+        }
+
+
         // GET: Player
         public ActionResult Index()
         {
@@ -32,6 +42,24 @@ namespace myFootball.Controllers
         {
             var player = new Player(id);
             return View(player);
+        }
+
+        [Route("player/new")]
+        public ActionResult New()
+        {
+
+            return View();
+
+        }
+
+        [HttpPost]
+        public ActionResult Create(Player player)
+        {
+            _context.Players.Add(player);
+            _context.SaveChanges();
+
+            return RedirectToAction("MainView", "Player");
+            //aorawiec: add information about succesfully added new player
         }
     }
 }

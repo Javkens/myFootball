@@ -284,9 +284,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Player\MainView.cshtml" />
     <Content Include="Views\Player\Player.cshtml" />
-    <Content Include="Views\Player\Create.cshtml" />
     <Content Include="Views\Player\Edit.cshtml" />
     <Content Include="Views\Test\Create.cshtml" />
+    <Content Include="Views\Player\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
