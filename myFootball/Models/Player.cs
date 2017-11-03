@@ -23,5 +23,10 @@ namespace myFootball.Models
         [Display(Name = "Adres")]
         public string Address { get; set; }
 
+        [Display(Name = "Zdjęcie zawodnika")]
+        public string Image { get; set; }
+
+        //public HttpPostedFileBase FileImage { get; set; }
+
     }
 }

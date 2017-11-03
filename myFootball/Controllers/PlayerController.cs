@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using myFootball.Models;
-
+using System.IO;
 
 namespace myFootball.Controllers
 {
@@ -17,19 +17,6 @@ namespace myFootball.Controllers
         {
             _context = new ApplicationDbContext();
 
-        }
-
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Route("player/save")]
-        public ActionResult Save(Player player)
-        {
-            _context.Players.Add(player);
-            _context.SaveChanges();
-
-            return RedirectToAction("Index");
-            //aorawiec: add information about succesfully added new player
         }
 
         // GET: Player
@@ -53,6 +40,34 @@ namespace myFootball.Controllers
             var player = new Player();
             return View(player);
 
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Route("player/save")]
+        public ActionResult Save(Player player, HttpPostedFileBase file)
+        {
+            
+            _context.Players.Add(player);
+            _context.SaveChanges();
+
+            _context.Entry(player).Reload();
+
+            //add image
+            if (Request.Files["Image"].ContentLength > 0)
+            {
+
+                string extension = Path.GetExtension(Request.Files["Image"].FileName);
+                string path = string.Format("{0}/{1}{2}", Server.MapPath("/Images/Players"), player.Id, extension);
+
+                Request.Files["Image"].SaveAs(path);
+
+                ViewData["Message"] = "File Uploaded Successfully";
+
+            }
+
+            return RedirectToAction("Index");
+            //aorawiec: add information about succesfully added new player
         }
     }
 }
