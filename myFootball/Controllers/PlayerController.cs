@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using myFootball.Models;
+using myFootball.ViewModels;
 using System.IO;
 
 namespace myFootball.Controllers
@@ -37,8 +38,15 @@ namespace myFootball.Controllers
         [Route("player/new")]
         public ActionResult New()
         {
-            var player = new Player();
-            return View(player);
+            var listgroups = _context.Groups.ToList();
+            var playereditview = new PlayerEditViewModel
+            {
+
+                Player = new Player(),
+                Groups = listgroups
+            };
+
+            return View(playereditview);
 
         }
 
@@ -54,13 +62,13 @@ namespace myFootball.Controllers
             _context.Entry(player).Reload();
 
             //add image
-            if (Request.Files["Image"].ContentLength > 0)
+            if (Request.Files["Player.Image"].ContentLength > 0)
             {
 
-                string extension = Path.GetExtension(Request.Files["Image"].FileName);
+                string extension = Path.GetExtension(Request.Files["Player.Image"].FileName);
                 string path = string.Format("{0}/{1}{2}", Server.MapPath("/Images/Players"), player.Id, extension);
 
-                Request.Files["Image"].SaveAs(path);
+                Request.Files["Player.Image"].SaveAs(path);
 
                 ViewData["Message"] = "File Uploaded Successfully";
 
