@@ -1,0 +1,36 @@
+﻿@model IEnumerable<myFootball.Models.Group>
+
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Grupy</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Nazwa grupy</th>
+            <th>Miejscowość</th>
+            <th>Ilość zawodników</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var group in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(group.Name, group.Id.ToString(), "Group")</td>
+                <td>@group.City</td>
+                <td>to do</td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+
+<p>
+    @Html.ActionLink("Dodaj nową grupę", "New", "Group", null, new { @class = "btn btn-primary" })
+</p>

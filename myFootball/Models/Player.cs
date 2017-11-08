@@ -26,6 +26,9 @@ namespace myFootball.Models
         [Display(Name = "Zdjęcie zawodnika")]
         public string Image { get; set; }
 
+        public int GroupId { get; set; }
+        public Group Group { get; set; }
+
         //public HttpPostedFileBase FileImage { get; set; }
 
     }

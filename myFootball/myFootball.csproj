@@ -221,6 +221,14 @@
     <Compile Include="Migrations\201711022144143_AddImageToPlayers1.Designer.cs">
       <DependentUpon>201711022144143_AddImageToPlayers1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711031817458_AddGroup.cs" />
+    <Compile Include="Migrations\201711031817458_AddGroup.Designer.cs">
+      <DependentUpon>201711031817458_AddGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711031826339_AddGroupToPlayerModel.cs" />
+    <Compile Include="Migrations\201711031826339_AddGroupToPlayerModel.Designer.cs">
+      <DependentUpon>201711031826339_AddGroupToPlayerModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Controllers\GroupController.cs" />
@@ -301,11 +309,12 @@
     <Content Include="Views\Player\Edit.cshtml" />
     <Content Include="Views\Test\Create.cshtml" />
     <Content Include="Views\Player\New.cshtml" />
+    <Content Include="Views\Group\Index.cshtml" />
+    <Content Include="Views\Group\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\Players\" />
-    <Folder Include="Views\Group\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -338,6 +347,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711022144143_AddImageToPlayers1.resx">
       <DependentUpon>201711022144143_AddImageToPlayers1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711031817458_AddGroup.resx">
+      <DependentUpon>201711031817458_AddGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711031826339_AddGroupToPlayerModel.resx">
+      <DependentUpon>201711031826339_AddGroupToPlayerModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

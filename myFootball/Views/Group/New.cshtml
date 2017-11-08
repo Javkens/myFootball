@@ -1,0 +1,29 @@
+﻿@model myFootball.Models.Group
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Dodaj nowa grupę.</h2>
+
+
+<p>
+    @using (Html.BeginForm("Save", "Group"))
+                {
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.City)
+            @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+        </div>
+
+        @Html.HiddenFor(m => m.Id)
+        @Html.AntiForgeryToken()
+
+        <button type="submit" class="btn btn-primary">Dodaj nową gruę</button>
+    }
+</p>
