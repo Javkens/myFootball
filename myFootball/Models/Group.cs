@@ -16,5 +16,4 @@ namespace myFootball.Models
         //aorawiec: dodanie konstruktora który wypełnia obiekt player wszystkimi zawodnikami danej grupy.
 
     }
-
 }

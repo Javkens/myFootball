@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using myFootball.Models;
+using myFootball.ViewModels;
 
 namespace myFootball.Models
 {
     public class GroupController : Controller
     {
         private ApplicationDbContext _context;
-
 
         public GroupController()
         {
@@ -21,8 +20,11 @@ namespace myFootball.Models
         // GET: Group
         public ActionResult Index()
         {
-            var Groups = _context.Groups.ToList();
-            return View(Groups);
+            var query = "SELECT g.Id, g.Name, g.City, (SELECT COUNT(GroupId) FROM dbo.Players WHERE GroupId = g.Id) AS NumberOfPlayers FROM dbo.Groups AS g";
+            IEnumerable<GroupIndexView> test = _context.Database.SqlQuery<GroupIndexView>(query).ToList();
+
+            return View(test);
+
         }
 
 

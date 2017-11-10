@@ -1,4 +1,4 @@
-﻿@model IEnumerable<myFootball.Models.Group>
+﻿@model IEnumerable<myFootball.ViewModels.GroupIndexView>
 
 
 
@@ -23,7 +23,7 @@
             <tr>
                 <td>@Html.ActionLink(group.Name, group.Id.ToString(), "Group")</td>
                 <td>@group.City</td>
-                <td>to do</td>
+                <td>@group.NumberOfPlayers.ToString()</td>
             </tr>
         }
 
