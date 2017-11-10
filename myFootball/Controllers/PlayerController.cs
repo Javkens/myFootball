@@ -23,14 +23,18 @@ namespace myFootball.Controllers
         // GET: Player
         public ActionResult Index()
         {
-            var Players = _context.Players.ToList();
-            return View(Players);
+
+            IEnumerable<PlayerGroup> query = (from p in _context.Players
+                                         join g in _context.Groups on p.GroupId equals g.Id
+                                         select new PlayerGroup { Player = p, Group = g }).ToList();
+
+            return View(query);
         }
 
         // GET: Test/id
         [Route("player/{id}")]
         public ActionResult Player(int id)
-        {
+        { 
             var player = _context.Players.FirstOrDefault(c => c.Id == id);
             return View(player);
         }

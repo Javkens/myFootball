@@ -1,4 +1,4 @@
-﻿@model IEnumerable<myFootball.Models.Player>
+﻿@model IEnumerable<myFootball.ViewModels.PlayerGroup>
 
 @{
     ViewBag.Title = "MainView";
@@ -14,15 +14,17 @@
             <th>Imię i nazwisko</th>
             <th>Data urodzenia</th>
             <th>Miejsce zamieszkania</th>
+            <th>Grupa</th>
         </tr>
     </thead>
     <tbody>
-        @foreach(var player in Model)
+        @foreach(var m in Model)
         {
             <tr>
-                <td>@Html.ActionLink(player.Name, player.Id.ToString(), "Player")</td>
-                <td>@player.Birthday</td>
-                <td>@player.Address</td>
+                <td>@Html.ActionLink(m.Player.Name, m.Player.Id.ToString(), "Player")</td>
+                <td>@m.Player.Birthday</td>
+                <td>@m.Player.Address</td>
+                <td>@m.Group.Name</td>
             </tr>
         }
 
