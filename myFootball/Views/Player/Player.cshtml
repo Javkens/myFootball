@@ -5,14 +5,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-@* aorawiec: zmiana tekstu na zmienne z modelu. *@
 <p>
     <h2>@Model.Name</h2>
 </p>
 
 <h3>Miejscowość: @Model.Address</h3>
 <h3>Data urodzenia: @Model.Birthday</h3>
+
+<p>
+    <a href="Edit/@Model.Id" class="btn btn-primary">Edytuj</a>
+</p>
 
 
 

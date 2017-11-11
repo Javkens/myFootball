@@ -60,10 +60,19 @@ namespace myFootball.Controllers
         public ActionResult Save(Player player, HttpPostedFileBase file)
         {
             
-            _context.Players.Add(player);
-            _context.SaveChanges();
+            //check if it's new player or only editing data of exist player
+            if(player.Id == 0)
+            {
+                _context.Players.Add(player);
+                _context.SaveChanges();
+                _context.Entry(player).Reload();
+            } else
+            {
+                var query = $"UPDATE dbo.Players SET Name='{player.Name}', Address='{player.Address}', Birthday='{player.Birthday}', GroupId='{player.GroupId}' WHERE Id={player.Id}";
+                _context.Database.ExecuteSqlCommand(query);
 
-            _context.Entry(player).Reload();
+            }
+            
 
             //add image
             if (Request.Files["Player.Image"].ContentLength > 0)
@@ -80,6 +89,26 @@ namespace myFootball.Controllers
 
             return RedirectToAction("Index");
             //aorawiec: add information about succesfully added new player
+        }
+
+
+
+        [Route("player/edit/{id}")]
+        public ActionResult Edit(int id)
+        {
+
+            var query = "SELECT * FROM dbo.Players WHERE Players.Id = '" + id + "'";
+            Player player = _context.Database.SqlQuery<Player>(query).Single();
+
+            var listgroups = _context.Groups.ToList();
+            var playereditview = new PlayerEditViewModel
+            {
+
+                Player = player,
+                Groups = listgroups
+            };
+
+            return View(playereditview);
         }
     }
 }
