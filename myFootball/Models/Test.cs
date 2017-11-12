@@ -9,25 +9,46 @@ namespace myFootball.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int IdKindOfTest { get; set; }
+
+        public int KindOfTestID { get; set; }
+        public KindOfTest KindOfTest { get; set; }
+
         public string Date { get; set; }
-        public int IDGroup { get; set; }
-        public string Data { get; set; } //aoraiwec tutaj tablica z danymi testów?
 
-        public Test(int _id)
-        {
-            Id = _id;
-            //temp (use default values) in futere this will be getting data from database
-            Name = "Jablonka";
-            IdKindOfTest = 2;
-            Date = "2017-09-12";
-            IDGroup = 4;
+        public int GroupID { get; set; }
+        public Group Group { get; set; }
 
-
-            //aorawiec get data from database
-        }
+        public string GroundType { get; set; }
         
-        //aorawiec: do zrobienia konstruktory
+    }
 
+    public class Result
+    {
+        public int Id { get; set; }
+
+        public int PlayerID { get; set; }
+        public Player Player { get; set; }
+
+        public int ExamID { get; set; }
+
+        public int DyscyplineID { get; set; }
+        public Dyscypline Dyscypline { get; set; }
+
+        public double Score { get; set; }
+
+    }
+
+    public class Dyscypline
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Type { get; set; }
+    }
+
+    public class KindOfTest
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string XMLDefintion { get; set; } //probabbly unneccesery
     }
 }

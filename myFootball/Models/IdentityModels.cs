@@ -23,6 +23,10 @@ namespace myFootball.Models
         public DbSet<Player> Players { get; set; }
         public DbSet<Result> Results { get; set; }
         public DbSet<Group> Groups { get; set; }
+        public DbSet<Dyscypline> Dyscyplines { get; set; }
+        public DbSet<KindOfTest> KindOfTests { get; set; }
+        public DbSet<Test> Tests { get; set; }
+
 
 
         public ApplicationDbContext()

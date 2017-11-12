@@ -30,6 +30,13 @@ namespace myFootball.Models
         public Group Group { get; set; }
 
         //public HttpPostedFileBase FileImage { get; set; }
+    }
 
+
+    public class Group
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string City { get; set; }
     }
 }

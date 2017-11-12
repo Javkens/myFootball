@@ -14,7 +14,7 @@ namespace myFootball.Controllers
         [Route("test/mainview")]
         public ActionResult MainView()
         {
-            var MainView = new Test(0); //aorawiec: tutaj bedzie trzeba zainicjalizować tylko tablicę ze wszystkimi testami. nie wiem czy nie utworzyc do tego osobnej klasy
+            var MainView = new Test(); //aorawiec: tutaj bedzie trzeba zainicjalizować tylko tablicę ze wszystkimi testami. nie wiem czy nie utworzyc do tego osobnej klasy
             return View(MainView);
 
         }
@@ -24,7 +24,7 @@ namespace myFootball.Controllers
         [Route("test/{id}")]
         public ActionResult Test(int id)
         {
-            var test = new Test(id);
+            var test = new Test();
             return View(test);
         }
     }

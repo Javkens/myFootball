@@ -229,14 +229,24 @@
     <Compile Include="Migrations\201711031826339_AddGroupToPlayerModel.Designer.cs">
       <DependentUpon>201711031826339_AddGroupToPlayerModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711121301315_TestingChanges.cs" />
+    <Compile Include="Migrations\201711121301315_TestingChanges.Designer.cs">
+      <DependentUpon>201711121301315_TestingChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711121316583_DatabaseFramework_LotOfChanges.cs" />
+    <Compile Include="Migrations\201711121316583_DatabaseFramework_LotOfChanges.Designer.cs">
+      <DependentUpon>201711121316583_DatabaseFramework_LotOfChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711121320480_DatabaseFramework_LotOfChanges2.cs" />
+    <Compile Include="Migrations\201711121320480_DatabaseFramework_LotOfChanges2.Designer.cs">
+      <DependentUpon>201711121320480_DatabaseFramework_LotOfChanges2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Controllers\GroupController.cs" />
-    <Compile Include="Models\Group.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Player.cs" />
-    <Compile Include="Models\Result.cs" />
     <Compile Include="Models\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -354,6 +364,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711031826339_AddGroupToPlayerModel.resx">
       <DependentUpon>201711031826339_AddGroupToPlayerModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711121301315_TestingChanges.resx">
+      <DependentUpon>201711121301315_TestingChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711121316583_DatabaseFramework_LotOfChanges.resx">
+      <DependentUpon>201711121316583_DatabaseFramework_LotOfChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711121320480_DatabaseFramework_LotOfChanges2.resx">
+      <DependentUpon>201711121320480_DatabaseFramework_LotOfChanges2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
