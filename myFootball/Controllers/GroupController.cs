@@ -27,7 +27,6 @@ namespace myFootball.Models
 
         }
 
-
         [Route("group/{id}")]
         public ActionResult Group(int id)
         {

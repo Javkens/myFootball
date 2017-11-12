@@ -190,6 +190,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DyscyplineController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
@@ -240,6 +241,14 @@
     <Compile Include="Migrations\201711121320480_DatabaseFramework_LotOfChanges2.cs" />
     <Compile Include="Migrations\201711121320480_DatabaseFramework_LotOfChanges2.Designer.cs">
       <DependentUpon>201711121320480_DatabaseFramework_LotOfChanges2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711121406139_ChangeInDyscyplineDb.cs" />
+    <Compile Include="Migrations\201711121406139_ChangeInDyscyplineDb.Designer.cs">
+      <DependentUpon>201711121406139_ChangeInDyscyplineDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711121410557_AddUnitTableToDatabase.cs" />
+    <Compile Include="Migrations\201711121410557_AddUnitTableToDatabase.Designer.cs">
+      <DependentUpon>201711121410557_AddUnitTableToDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -322,6 +331,8 @@
     <Content Include="Views\Player\New.cshtml" />
     <Content Include="Views\Group\Index.cshtml" />
     <Content Include="Views\Group\New.cshtml" />
+    <Content Include="Views\Dyscypline\Index.cshtml" />
+    <Content Include="Views\Dyscypline\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -373,6 +384,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711121320480_DatabaseFramework_LotOfChanges2.resx">
       <DependentUpon>201711121320480_DatabaseFramework_LotOfChanges2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711121406139_ChangeInDyscyplineDb.resx">
+      <DependentUpon>201711121406139_ChangeInDyscyplineDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711121410557_AddUnitTableToDatabase.resx">
+      <DependentUpon>201711121410557_AddUnitTableToDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

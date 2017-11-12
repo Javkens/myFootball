@@ -1,0 +1,29 @@
+﻿@model myFootball.ViewModels.DyscyplineUnits
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Dodaj nową dyscyplinę do bazy danych.</h2>
+
+<p>
+    @using (Html.BeginForm("Save", "Dyscypline"))
+    {
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Dyscypline.Name)
+            @Html.TextBoxFor(m => m.Dyscypline.Name, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Dyscypline.UnitId)
+            @Html.DropDownListFor(m => m.Dyscypline.UnitId, new SelectList(Model.Units, "Id", "Type"), "", new { @class = "form-control" })                
+        </div>
+
+        @Html.HiddenFor(m => m.Dyscypline.Id);
+        @Html.AntiForgeryToken()
+
+        <button type="submit" class="btn btn-primary">Dodaj nową dyscyplinę!</button>
+    }
+</p>

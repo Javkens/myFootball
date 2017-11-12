@@ -1,0 +1,35 @@
+﻿@model IEnumerable<myFootball.ViewModels.DyscyplineUnit>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Wyświetl dyscypliny</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nazwa</th>
+            <th>Jednostka miary</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>@m.Dyscypline.Id</td>
+                <td>@m.Dyscypline.Name</td>
+                <td>@m.Unit.Type</td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+
+<p>
+    @Html.ActionLink("Dodaj nową dyscyplinę", "New", "Dyscypline", null, new { @class = "btn btn-primary" })
+</p>

@@ -26,6 +26,7 @@ namespace myFootball.Models
         public DbSet<Dyscypline> Dyscyplines { get; set; }
         public DbSet<KindOfTest> KindOfTests { get; set; }
         public DbSet<Test> Tests { get; set; }
+        public DbSet<Unit> Units { get; set; }
 
 
 

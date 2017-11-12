@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -42,7 +43,18 @@ namespace myFootball.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public int UnitId { get; set; }
+        public Unit Unit { get; set; }
+    }
+
+    public class Unit
+    {
+        public int Id { get; set; }
         public string Type { get; set; }
+        public string TypeGenetive { get; set; }
+        public string TypeShort { get; set; }
+
     }
 
     public class KindOfTest

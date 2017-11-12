@@ -26,4 +26,20 @@ namespace myFootball.ViewModels
         public string City { get; set; }
         public int NumberOfPlayers { get; set; }
     }
+
+
+    //dyscypline/add
+    public class DyscyplineUnits
+    {
+        public Dyscypline Dyscypline { get; set; }
+        public IEnumerable<Unit> Units { get; set; }
+    }
+
+    public class DyscyplineUnit
+    {
+        public Dyscypline Dyscypline { get; set; }
+        public Unit Unit { get; set; }
+    }
+
+    //dyscypline/index
 }
