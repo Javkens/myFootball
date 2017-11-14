@@ -1,0 +1,31 @@
+﻿@model IEnumerable<myFootball.Models.KindOfTest>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Rodzaje testów</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Nazwa testu</th>
+            <th>Struktura testu</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(m.Name, m.Id.ToString(), "KindOfTest")</td>
+                <td>TO DO</td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+
+<p>
+    @Html.ActionLink("Dodaj nowy rodzaj testu.", "New", "KindOfTest", null, new { @class = "btn btn-primary" })
+</p>

@@ -62,5 +62,12 @@ namespace myFootball.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string XMLDefintion { get; set; } //probabbly unneccesery
+
+        public KindOfTest()
+        {
+            Id = 0;
+            Name = "brak nazwy";
+            XMLDefintion = "empty xml";
+        }
     }
 }

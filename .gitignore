@@ -260,3 +260,5 @@ paket-files/
 __pycache__/
 *.pyc
 *.cs
+/myFootball/XML/0Wzrost.xml
+/myFootball/XML/0TestStandardowy.xml

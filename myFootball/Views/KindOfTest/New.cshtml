@@ -1,0 +1,59 @@
+﻿@model myFootball.ViewModels.KindOfTestCreate
+
+
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Dodaj nowy rodzaj testu.</h2>
+<br /> <br />
+<p>
+
+
+
+    @using (Html.BeginForm("New", "KindOfTest", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.KindOfTest.Name)
+            @Html.TextBoxFor(m => m.KindOfTest.Name, new { @class = "form-control" })
+        </div>
+        
+        @Html.HiddenFor(m => m.KindOfTest.Id)
+        @Html.AntiForgeryToken()
+        <table class="table table-striped table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nazwa</th>
+                    <th>Jednostka miary</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @if (Model.NumberOfDyscyplines != 0)
+                {
+                    for (int i = 0; i < Model.NumberOfDyscyplines; i++)
+                    {
+                        <tr>
+                            <td>@Model.Dyscyplines[i].Dyscypline.Name</td>
+                            <td>@Model.Dyscyplines[i].Unit.Type</td>
+
+                            @*bind data*@
+                            @Html.HiddenFor(m => m.Dyscyplines[i].Dyscypline.Id)
+                            @Html.HiddenFor(m => m.Dyscyplines[i].Dyscypline.Name)
+                            @Html.HiddenFor(m => m.Dyscyplines[i].Unit.Type)
+                        </tr>
+                    }
+
+                }
+            </tbody>
+        </table>
+        <h5>Dodaj nową dyscyplinę do tego rodzaju testu: </h5>
+        @Html.DropDownListFor(m => m.NewDyscypline.Id, new SelectList(Model.AllDyscyplines, "Id", "Name"), "", new { @class = "form-control" })
+        <button type="submit" class="btn btn-primary btn-sm" name="new:creating" >Dodaj nową dyscyplinę </button>
+
+        <p> <br />
+            <button type="submit" class="btn btn-primary btn-lg btn-block" name="new:save">Dodaj nową dyscyplinę</button>
+        </p>
+    }
