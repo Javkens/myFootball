@@ -43,6 +43,7 @@
                             @Html.HiddenFor(m => m.Dyscyplines[i].Dyscypline.Id)
                             @Html.HiddenFor(m => m.Dyscyplines[i].Dyscypline.Name)
                             @Html.HiddenFor(m => m.Dyscyplines[i].Unit.Type)
+                            @Html.HiddenFor(m => m.Dyscyplines[i].Unit.Id)
                         </tr>
                     }
 
@@ -54,6 +55,6 @@
         <button type="submit" class="btn btn-primary btn-sm" name="new:creating" >Dodaj nową dyscyplinę </button>
 
         <p> <br />
-            <button type="submit" class="btn btn-primary btn-lg btn-block" name="new:save">Dodaj nową dyscyplinę</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block" name="new:save">Dodaj nowy rodzaj testu</button>
         </p>
     }

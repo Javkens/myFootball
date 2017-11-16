@@ -29,18 +29,17 @@ namespace myFootball.ViewModels
 
 
     //dyscypline/add
-    public class DyscyplineUnits
-    {
-        public Dyscypline Dyscypline { get; set; }
-        public IEnumerable<Unit> Units { get; set; }
-    }
-
-
-
     public class DyscyplineUnit
     {
         public Dyscypline Dyscypline { get; set; }
         public Unit Unit { get; set; }
+    }
+
+
+    public class DyscyplineUnits
+    {
+        public Dyscypline Dyscypline { get; set; }
+        public IEnumerable<Unit> Units { get; set; }
     }
 
 
@@ -58,29 +57,6 @@ namespace myFootball.ViewModels
             KindOfTest = new KindOfTest();
             Dyscyplines = new List<DyscyplineUnit>();
             NumberOfDyscyplines = 0;
-        }
-
-
-        public void SaveToXml(string path)
-        {
-            XmlDocument xmldoc = new XmlDocument();
-            XmlDeclaration decl = xmldoc.CreateXmlDeclaration("1.0", "UTF-16", "");
-            xmldoc.InsertBefore(decl, xmldoc.DocumentElement);
-            XmlElement RootNode = xmldoc.CreateElement("KindOfTest");
-            RootNode.SetAttribute("Id", KindOfTest.Id.ToString());
-            RootNode.SetAttribute("Name", KindOfTest.Name);
-            xmldoc.AppendChild(RootNode);
-
-            foreach(var d in Dyscyplines)
-            {
-                XmlElement childNode = xmldoc.CreateElement("Dyscypline");
-                childNode.SetAttribute("Id", d.Dyscypline.Id.ToString());
-                childNode.SetAttribute("Name", d.Dyscypline.Name);
-                childNode.SetAttribute("UnitId", d.Unit.Id.ToString());
-                RootNode.AppendChild(childNode);
-            }
-        
-            xmldoc.Save(path);
         }
     }
 

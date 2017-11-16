@@ -324,7 +324,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Test\Test.cshtml" />
-    <Content Include="Views\Test\MainView.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Player\Index.cshtml" />

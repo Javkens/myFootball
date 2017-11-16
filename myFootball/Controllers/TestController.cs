@@ -9,13 +9,21 @@ namespace myFootball.Controllers
 {
     public class TestController : Controller
     {
+        private ApplicationDbContext _context;
+
+        public TestController()
+        {
+            _context = new ApplicationDbContext();
+
+        }
+
+
         //aorawiec: do wykonania główny widok testów
         // GET: test
-        [Route("test/mainview")]
-        public ActionResult MainView()
+        public ActionResult Index()
         {
-            var MainView = new Test(); //aorawiec: tutaj bedzie trzeba zainicjalizować tylko tablicę ze wszystkimi testami. nie wiem czy nie utworzyc do tego osobnej klasy
-            return View(MainView);
+            IEnumerable<Test> variable = _context.Tests.ToList();
+            return View(variable);
 
         }
 
