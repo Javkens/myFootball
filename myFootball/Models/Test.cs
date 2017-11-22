@@ -11,16 +11,14 @@ namespace myFootball.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public int KindOfTestID { get; set; }
-        public KindOfTest KindOfTest { get; set; }
-
         public string Date { get; set; }
 
-        public int GroupID { get; set; }
-        public Group Group { get; set; }
+        public string City { get; set; }
 
+        public int KindOfTestID { get; set; }
+        public KindOfTest KindOfTest { get; set; }
+ 
         public string GroundType { get; set; }
-        
     }
 
     public class Result
@@ -62,12 +60,5 @@ namespace myFootball.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string XMLDefintion { get; set; } //probabbly unneccesery
-
-        public KindOfTest()
-        {
-            Id = 0;
-            Name = "brak nazwy";
-            XMLDefintion = "empty xml";
-        }
     }
 }

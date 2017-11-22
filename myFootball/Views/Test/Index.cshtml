@@ -1,6 +1,37 @@
-﻿
+﻿@model IEnumerable<myFootball.Models.Test>
+
+
 @{
-    ViewBag.Title = "MainView";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nazwa</th>
+            <th>Data</th>
+            <th>Miejscowość</th>
+            <th>Rodzaj testu</th>
+            <th>Ilość zawodników</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>@m.Id</td>
+                <td>@Html.ActionLink(m.Name, m.Id.ToString(), "Test")</td>
+                <td>@m.Date</td>
+                <td>@m.City</td>
+                <td>@m.KindOfTest.Name</td>
+                <td>TO DO</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    @Html.ActionLink("Dodaj nowy test", "New", "Test", null, new { @class = "btn btn-primary" })
+</p>

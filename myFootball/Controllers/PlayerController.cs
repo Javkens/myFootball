@@ -31,6 +31,7 @@ namespace myFootball.Controllers
             return View(query);
         }
 
+
         // GET: Test/id
         [Route("player/{id}")]
         public ActionResult Player(int id)
@@ -39,27 +40,20 @@ namespace myFootball.Controllers
             return View(player);
         }
 
+
         [Route("player/new")]
         public ActionResult New()
         {
-            var listgroups = _context.Groups.ToList();
-            var playereditview = new PlayerEditViewModel
-            {
-
-                Player = new Player(),
-                Groups = listgroups
-            };
-
+            var playereditview = new PlayerEditViewModel { Player = new Player(), Groups = _context.Groups.ToList() };
             return View(playereditview);
-
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("player/save")]
         public ActionResult Save(Player player, HttpPostedFileBase file)
         {
-            
             //check if it's new player or only editing data of exist player
             if(player.Id == 0)
             {
@@ -70,21 +64,15 @@ namespace myFootball.Controllers
             {
                 var query = $"UPDATE dbo.Players SET Name='{player.Name}', Address='{player.Address}', Birthday='{player.Birthday}', GroupId='{player.GroupId}' WHERE Id={player.Id}";
                 _context.Database.ExecuteSqlCommand(query);
-
             }
-            
 
             //add image
             if (Request.Files["Player.Image"].ContentLength > 0)
             {
-
                 string extension = Path.GetExtension(Request.Files["Player.Image"].FileName);
                 string path = string.Format("{0}/{1}{2}", Server.MapPath("/Images/Players"), player.Id, extension);
-
                 Request.Files["Player.Image"].SaveAs(path);
-
                 ViewData["Message"] = "File Uploaded Successfully";
-
             }
 
             return RedirectToAction("Index");
@@ -92,22 +80,11 @@ namespace myFootball.Controllers
         }
 
 
-
         [Route("player/edit/{id}")]
         public ActionResult Edit(int id)
         {
-
-            var query = "SELECT * FROM dbo.Players WHERE Players.Id = '" + id + "'";
-            Player player = _context.Database.SqlQuery<Player>(query).Single();
-
-            var listgroups = _context.Groups.ToList();
-            var playereditview = new PlayerEditViewModel
-            {
-
-                Player = player,
-                Groups = listgroups
-            };
-
+            Player player = _context.Database.SqlQuery<Player>($"SELECT * FROM dbo.Players WHERE Players.Id = '{id}'").Single();
+            var playereditview = new PlayerEditViewModel { Player = player, Groups = _context.Groups.ToList() };
             return View(playereditview);
         }
     }

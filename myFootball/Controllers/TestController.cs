@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using myFootball.Models;
+using myFootball.ViewModels;
 
 namespace myFootball.Controllers
 {
@@ -18,12 +19,19 @@ namespace myFootball.Controllers
         }
 
 
-        //aorawiec: do wykonania główny widok testów
-        // GET: test
         public ActionResult Index()
         {
             IEnumerable<Test> variable = _context.Tests.ToList();
             return View(variable);
+
+        }
+
+
+        [Route("test/new")]
+        public ActionResult New()
+        {
+            var AddTestVar = new TestAddViewModel { Test = new Test(), KindOfTests = _context.KindOfTests.ToList() };
+            return View(AddTestVar);
 
         }
 

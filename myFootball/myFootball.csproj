@@ -252,6 +252,10 @@
     <Compile Include="Migrations\201711121410557_AddUnitTableToDatabase.Designer.cs">
       <DependentUpon>201711121410557_AddUnitTableToDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711162204322_NewStructureOfTestsDb.cs" />
+    <Compile Include="Migrations\201711162204322_NewStructureOfTestsDb.Designer.cs">
+      <DependentUpon>201711162204322_NewStructureOfTestsDb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Controllers\GroupController.cs" />
@@ -261,6 +265,7 @@
     <Compile Include="Models\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\Test-ViewModel.cs" />
     <Compile Include="ViewModels\ViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -330,7 +335,6 @@
     <Content Include="Views\Player\Index.cshtml" />
     <Content Include="Views\Player\Player.cshtml" />
     <Content Include="Views\Player\Edit.cshtml" />
-    <Content Include="Views\Test\Create.cshtml" />
     <Content Include="Views\Player\New.cshtml" />
     <Content Include="Views\Group\Index.cshtml" />
     <Content Include="Views\Group\New.cshtml" />
@@ -338,7 +342,7 @@
     <Content Include="Views\Dyscypline\New.cshtml" />
     <Content Include="Views\KindOfTest\Index.cshtml" />
     <Content Include="Views\KindOfTest\New.cshtml" />
-    <Content Include="Views\KindOfTest\Save.cshtml" />
+    <Content Include="Views\Test\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -396,6 +400,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711121410557_AddUnitTableToDatabase.resx">
       <DependentUpon>201711121410557_AddUnitTableToDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711162204322_NewStructureOfTestsDb.resx">
+      <DependentUpon>201711162204322_NewStructureOfTestsDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

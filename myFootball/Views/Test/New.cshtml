@@ -1,0 +1,39 @@
+﻿@model myFootball.ViewModels.TestAddViewModel
+
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    @using (Html.BeginForm("Save", "Test", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Test.Name)
+            @Html.TextBoxFor(m => m.Test.Name, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Test.Date)
+            @Html.TextBoxFor(m => m.Test.Date, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Test.City)
+            @Html.TextBoxFor(m => m.Test.City, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Test.KindOfTestID)
+            @Html.DropDownListFor(m => m.Test.KindOfTestID, new SelectList(Model.KindOfTests, "Id", "Name"), "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Test.KindOfTestID)
+        </div>
+
+
+        @Html.HiddenFor(m => m.Test.Id)
+        @Html.AntiForgeryToken()
+
+        <button type="submit" class="btn btn-primary">Dodaj nowego test!</button>
+    }
+</p>
