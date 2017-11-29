@@ -23,12 +23,7 @@ namespace myFootball.Controllers
         // GET: Player
         public ActionResult Index()
         {
-
-            IEnumerable<PlayerGroup> query = (from p in _context.Players
-                                         join g in _context.Groups on p.GroupId equals g.Id
-                                         select new PlayerGroup { Player = p, Group = g }).ToList();
-
-            return View(query);
+            return View();
         }
 
 

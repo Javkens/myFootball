@@ -22,6 +22,7 @@ namespace myFootball.Dtos
         public string Image { get; set; }
 
         public int GroupId { get; set; }
+
         //probably not nessessary
        // public Group Group { get; set; }
     }

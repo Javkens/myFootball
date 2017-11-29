@@ -1,34 +1,79 @@
-﻿@model IEnumerable<myFootball.ViewModels.PlayerGroup>
-
-@{
+﻿@{
     ViewBag.Title = "MainView";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<table class="table table-bordered table-hover">
+<table class="table table-bordered table-hover" id="players">
     <thead>
         <tr>
             <th>Imię i nazwisko</th>
             <th>Data urodzenia</th>
             <th>Miejsce zamieszkania</th>
             <th>Grupa</th>
+            <th>Usuń</th>
         </tr>
     </thead>
     <tbody>
-        @foreach(var m in Model)
-        {
-            <tr>
-                <td>@Html.ActionLink(m.Player.Name, m.Player.Id.ToString(), "Player")</td>
-                <td>@m.Player.Birthday</td>
-                <td>@m.Player.Address</td>
-                <td>@m.Group.Name</td>
-            </tr>
-        }
-
-
     </tbody>
 </table>
 
 <p>
     @Html.ActionLink("Dodaj zawodnika", "New", "Player", null, new { @class = "btn btn-primary" })
 </p>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#players").DataTable({
+                ajax: {
+                    url: "/api/player",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                        render: function(data, type, player) {
+                            return "<a href='/player/edit/'" + player.id + "'>" + player.name + "</a>";
+
+                        }
+                    },
+                    {
+                        data: "birthday"
+                    },
+                    {
+                        data: "address"
+                    },
+                    {
+                        data: "name"
+                    },
+                    {
+                        data: "id",
+                        render: function(data) {
+                            return "<button class='btn-link js-delete' data-player-id=" + data + ">Usuń zawodnika</button>";
+                        }
+                    }
+                ]
+
+            });
+
+            $("#players").on("click", ".js-delete", function () {
+
+                var button = $(this);
+                bootbox.confirm("Czy jestes pewien, że chcesz usunąć tego zawodnika?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "api/player/" + button.attr("data-player-id"),
+                            method: "DELETE",
+                            success: function () {
+                                console.log("Success");
+                                button.parents("tr").remove();
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+}

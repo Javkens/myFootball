@@ -18,8 +18,6 @@ namespace myFootball.Models
         [Display(Name = "Data urodzenia")]
         public string Birthday { get; set; }
 
-        //public int WittySystemId { get; set; } aorawiec: question that is nessesery
-
         [Display(Name = "Adres")]
         public string Address { get; set; }
 
@@ -28,8 +26,6 @@ namespace myFootball.Models
 
         public int GroupId { get; set; }
         public Group Group { get; set; }
-
-        //public HttpPostedFileBase FileImage { get; set; }
     }
 
 
