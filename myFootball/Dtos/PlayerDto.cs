@@ -35,4 +35,28 @@ namespace myFootball.Dtos
         public string Name { get; set; }
 
     }
+
+    public class TestDto
+    {
+
+
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public string Date { get; set; }
+
+        public string City { get; set; }
+
+        public int KindOfTestID { get; set; }
+        public KindOfTestDto KindOfTest { get; set; }
+
+        public string GroundType { get; set; }
+    }
+
+    public class KindOfTestDto
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string XMLDefintion { get; set; } //probabbly unneccesery
+    }
 }

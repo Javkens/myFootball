@@ -5,35 +5,69 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<p>
-    @using (Html.BeginForm("Save", "Test", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
+<p id="test">
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Test.Name)
-            @Html.TextBoxFor(m => m.Test.Name, new { @class = "form-control" })
-        </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Test.Name)
+        @Html.TextBoxFor(m => m.Test.Name, new { @class = "form-control" })
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Test.Date)
-            @Html.TextBoxFor(m => m.Test.Date, new { @class = "form-control" })
-        </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Test.Date)
+        @Html.TextBoxFor(m => m.Test.Date, new { @class = "form-control" })
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Test.City)
-            @Html.TextBoxFor(m => m.Test.City, new { @class = "form-control" })
-        </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Test.City)
+        @Html.TextBoxFor(m => m.Test.City, new { @class = "form-control" })
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Test.KindOfTestID)
-            @Html.DropDownListFor(m => m.Test.KindOfTestID, new SelectList(Model.KindOfTests, "Id", "Name"), "", new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Test.KindOfTestID)
-        </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Test.KindOfTestID)
+        @Html.DropDownListFor(m => m.Test.KindOfTestID, new SelectList(Model.KindOfTests, "Id", "Name"), "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Test.KindOfTestID)
+    </div>
 
 
-        @Html.HiddenFor(m => m.Test.Id)
-        @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Test.Id)
+    @Html.AntiForgeryToken()
 
-        <button type="submit" class="btn btn-primary">Dodaj nowego test!</button>
-    }
+    <button type="submit" class="btn btn-primary js-add-test"> Dodaj nowego test!</button>
 </p>
+
+
+
+
+@section scripts
+{
+    <script>
+
+        $(document).ready(function () {
+
+            $(".js-add-test").on("click", function () {
+
+                var button = $(this);
+                bootbox.confirm("Czy jestes pewien, że chcesz dodać nowy test?", function (result) {
+                    if (result) {
+
+                        var name = document.getElementById("Test_Name").value;
+                        var date = document.getElementById("Test_Date").value;
+                        var city = document.getElementById("Test_City").value;
+                        var kindoftest = document.getElementById("Test_KindOfTestID").value;
+
+
+                        $.ajax({
+                            url: "/api/test/",
+                            method: "POST",
+                            data: { name: name, date: date, city: city, KindOfTestId: kindoftest},
+                            success: function (response) {
+                                console.log(response);
+                                window.location = "/test/" + response.id;
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}
