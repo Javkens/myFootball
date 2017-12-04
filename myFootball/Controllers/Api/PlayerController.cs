@@ -2,6 +2,7 @@
 using myFootball.Dtos;
 using myFootball.Models;
 using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -24,7 +25,10 @@ namespace myFootball.Controllers.Api
         //GET api/player
         public IHttpActionResult GetPlayers()
         {
-            return Ok(_context.Players.ToList().Select(Mapper.Map<Player, PlayerDto>));
+            return Ok(_context.Players
+                .Include(p => p.Group)
+                .ToList()
+                .Select(Mapper.Map<Player, PlayerDto>));
         }
 
 

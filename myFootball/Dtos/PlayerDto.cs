@@ -23,7 +23,16 @@ namespace myFootball.Dtos
 
         public int GroupId { get; set; }
 
+        public GroupDto Group { get; set; }
+
         //probably not nessessary
        // public Group Group { get; set; }
+    }
+
+    public class GroupDto
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
     }
 }
