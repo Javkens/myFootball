@@ -1,10 +1,130 @@
-﻿@model myFootball.Models.Test
+﻿@model myFootball.ViewModels.TestRenderModel
+
+
 @{
     ViewBag.Title = "Test";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Name</h2>
-<h1>Id: @Model.Id</h1>
-<h1>Data: @Model.Date</h1>
-<h1>Id kind of test: @Model.KindOfTestID.ToString()</h1>
+<h2>@Model.Test.Name</h2>
+@*<h3>Data: @Model.Test.Date</h3>
+    <h3>Id kind of test: @Model.Test.KindOfTestID.ToString()</h3>*@
+
+
+<table class="table table-bordered table-hover" id="test">
+    <thead>
+        <tr>
+            <th>Imię i nazwisko</th>
+            @foreach (var d in Model.ListOfDyscyplines)
+            {
+            <th>@d.Name</th>
+            }
+            <th>Usuń</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+
+</table>
+<br> <br>
+
+
+<a id="js-edit" class="btn btn-primary">Edytuj zawodników</a>
+
+
+<p>
+    <div id="addPlayersView" hidden>
+        <div><input class="form-control" type="text" id="textBoxPlayers" /></div>
+        <div><select class="form-control" id="dropDownList" >
+        </select></div>
+
+        <button id="js-add-player" class="btn btn-primary" hidden>Dodaj</button>
+    </div>
+</p>
+
+<a id="js-save-players" class="btn btn-primary">Zakończ dodawanie nowych zawodników</a>
+
+
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            //declare buttons
+            var ButtonAddPlayers = $("#js-add-player")
+            var ButtonSavePlayers = $("#js-save-players")
+            var ButtonEditPlayers = $("#js-edit");
+
+            var DataTable = $("#test").DataTable();
+            var ViewPlayers = $("#addPlayersView");
+
+            var TextBoxPlayers = $('#textBoxPlayers');
+            var DropDownList = document.getElementById("dropDownList");
+
+            //declare startupview
+            ButtonAddPlayers.hide();
+            ButtonSavePlayers.hide();
+            
+
+            ButtonEditPlayers.on("click", function () {
+
+                ViewPlayers.show();
+                ButtonAddPlayers.show();
+                ButtonSavePlayers.show();
+                ButtonEditPlayers.hide();
+
+                $.ajax({
+                    url: "/api/player/",
+                    method: "GET",
+                    success: function (data) {
+                        $.each (data, function (id) {
+                            var option = document.createElement("option");
+                            option.text = data[id].name;
+                            option.id = data[id].id;
+                            DropDownList.add(option);
+                        });
+                        console.log("Success: download data players in test view.");
+                    },
+                    error: function () {
+                        console.log("Cannot get data for users.");
+                    }
+                });            
+
+            });
+
+            //filtering select
+            TextBoxPlayers.keyup(function () {
+                var valthis = $(this).val().toLowerCase();
+                var num = 0;
+                $('select#dropDownList>option').each(function () {
+                    var text = $(this).text().toLowerCase();
+                    if (text.indexOf(valthis) !== -1)
+                    { $(this).show(); $(this).prop('selected', true); }
+                    else { $(this).hide(); }
+                });
+            });
+
+
+            ButtonAddPlayers.on("click", function () {
+                //console.log(DropDownList.selecteditem.text);
+                //pobieranie pełnych informacji o zawodniku
+                //dodanie do bazy nowego zawodnika
+                //sprawdzanie czy danego zawodnika nie ma juz w bazie i jesli jest to komunikat ze nie mozna dodac istniejacego zawodnika
+                //DropDownList
+                DataTable.row.add(["abcd", "abc", "abc", "bd", "bcs"]);
+                DataTable.draw();
+            });
+
+            ButtonSavePlayers.on("click", function () {
+
+                ButtonSavePlayers.hide();
+                ViewPlayers.hide();
+                ButtonEditPlayers.show();
+            })
+
+        });
+
+        function SetPlayersInDropDownList(data) {
+        }
+    </script> 
+}

@@ -13,10 +13,10 @@ namespace myFootball.ViewModels
         public IEnumerable<KindOfTest> KindOfTests { get; set; }
     }
 
-    public class TestViewModel
+    public class TestRenderModel
     {
         public Test Test { get; set; }
-        public int NumberOfDyscyplines { get; set; }
+        public List<Dyscypline> ListOfDyscyplines = new List<Dyscypline>();
 
     }
 }
