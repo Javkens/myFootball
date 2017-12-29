@@ -273,9 +273,18 @@
     <Compile Include="Migrations\201711162204322_NewStructureOfTestsDb.Designer.cs">
       <DependentUpon>201711162204322_NewStructureOfTestsDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712162048039_ChangeResultsTable.cs" />
+    <Compile Include="Migrations\201712162048039_ChangeResultsTable.Designer.cs">
+      <DependentUpon>201712162048039_ChangeResultsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712162133135_ModifyInResultsTable.cs" />
+    <Compile Include="Migrations\201712162133135_ModifyInResultsTable.Designer.cs">
+      <DependentUpon>201712162133135_ModifyInResultsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Controllers\GroupController.cs" />
+    <Compile Include="Models\Defines.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Player.cs" />
@@ -595,6 +604,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711162204322_NewStructureOfTestsDb.resx">
       <DependentUpon>201711162204322_NewStructureOfTestsDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712162048039_ChangeResultsTable.resx">
+      <DependentUpon>201712162048039_ChangeResultsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712162133135_ModifyInResultsTable.resx">
+      <DependentUpon>201712162133135_ModifyInResultsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

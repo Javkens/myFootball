@@ -19,4 +19,10 @@ namespace myFootball.ViewModels
         public List<Dyscypline> ListOfDyscyplines = new List<Dyscypline>();
 
     }
+
+    public class TestResult
+    {
+        public string Name { get; set; }
+
+    }
 }

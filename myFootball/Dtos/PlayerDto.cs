@@ -59,4 +59,10 @@ namespace myFootball.Dtos
         public string Name { get; set; }
         public string XMLDefintion { get; set; } //probabbly unneccesery
     }
+
+    public class TestResultDto
+    {
+        public string Name { get; set; }
+
+    }
 }

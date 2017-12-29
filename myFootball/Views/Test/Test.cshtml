@@ -11,13 +11,13 @@
     <h3>Id kind of test: @Model.Test.KindOfTestID.ToString()</h3>*@
 
 
-<table class="table table-bordered table-hover" id="test">
+<table class="table table-bordered table-hover" id="test" test_id="@Model.Test.Id">
     <thead>
         <tr>
             <th>Imię i nazwisko</th>
             @foreach (var d in Model.ListOfDyscyplines)
             {
-            <th>@d.Name</th>
+                <th>@d.Name</th>
             }
             <th>Usuń</th>
         </tr>
@@ -31,15 +31,16 @@
 <a id="js-edit" class="btn btn-primary">Edytuj zawodników</a>
 
 
-<p>
-    <div id="addPlayersView" hidden>
-        <div><input class="form-control" type="text" id="textBoxPlayers" /></div>
-        <div><select class="form-control" id="dropDownList" >
-        </select></div>
-
-        <button id="js-add-player" class="btn btn-primary" hidden>Dodaj</button>
-    </div>
-</p>
+<table class="table table-bordered table-hover" id="add-players">
+    <thead>
+        <tr>
+            <th>Imię i nazwisko</th>
+            <th>Miejscowość</th>
+            <th>Dodaj</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
 
 <a id="js-save-players" class="btn btn-primary">Zakończ dodawanie nowych zawodników</a>
 
@@ -51,12 +52,14 @@
     <script>
         $(document).ready(function () {
             //declare buttons
-            var ButtonAddPlayers = $("#js-add-player")
-            var ButtonSavePlayers = $("#js-save-players")
+            var ButtonAddPlayers = $("#js-add-player");
+            var ButtonSavePlayers = $("#js-save-players");
             var ButtonEditPlayers = $("#js-edit");
 
-            var DataTable = $("#test").DataTable();
-            var ViewPlayers = $("#addPlayersView");
+            var TableTest = $("#test");
+            var DataTablePlayers = $("#add-players");
+            var DataTablePlayersWrapper;
+            var IsTablePlayersCreated = false;
 
             var TextBoxPlayers = $('#textBoxPlayers');
             var DropDownList = document.getElementById("dropDownList");
@@ -64,49 +67,46 @@
             //declare startupview
             ButtonAddPlayers.hide();
             ButtonSavePlayers.hide();
-            
+            DataTablePlayers.hide();
 
-            ButtonEditPlayers.on("click", function () {
 
-                ViewPlayers.show();
-                ButtonAddPlayers.show();
-                ButtonSavePlayers.show();
-                ButtonEditPlayers.hide();
-
-                $.ajax({
-                    url: "/api/player/",
-                    method: "GET",
-                    success: function (data) {
-                        $.each (data, function (id) {
-                            var option = document.createElement("option");
-                            option.text = data[id].name;
-                            option.id = data[id].id;
-                            DropDownList.add(option);
-                        });
-                        console.log("Success: download data players in test view.");
+            $("#test").DataTable({
+                ajax: {
+                    url: "/api/test/" + TableTest.attr("test_id"),
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
                     },
-                    error: function () {
-                        console.log("Cannot get data for users.");
+                    {
+                        data: "name",
+                    },
+                    {
+                        data: "name",
+                    },
+                    {
+                        data: "name",
+                    },
+                    {
+                        data: "name",
                     }
-                });            
+                ]
 
             });
 
-            //filtering select
-            TextBoxPlayers.keyup(function () {
-                var valthis = $(this).val().toLowerCase();
-                var num = 0;
-                $('select#dropDownList>option').each(function () {
-                    var text = $(this).text().toLowerCase();
-                    if (text.indexOf(valthis) !== -1)
-                    { $(this).show(); $(this).prop('selected', true); }
-                    else { $(this).hide(); }
-                });
+
+            ButtonEditPlayers.on("click", function () {
+                ButtonAddPlayers.show();
+                ButtonSavePlayers.show();
+                ButtonEditPlayers.hide();
+                IsTablePlayersCreated = CreateTableForPlayers(IsTablePlayersCreated, DataTablePlayers, DataTablePlayersWrapper);
+                DataTablePlayersWrapper = $("#add-players_wrapper");
+
             });
 
 
             ButtonAddPlayers.on("click", function () {
-                //console.log(DropDownList.selecteditem.text);
                 //pobieranie pełnych informacji o zawodniku
                 //dodanie do bazy nowego zawodnika
                 //sprawdzanie czy danego zawodnika nie ma juz w bazie i jesli jest to komunikat ze nie mozna dodac istniejacego zawodnika
@@ -118,13 +118,59 @@
             ButtonSavePlayers.on("click", function () {
 
                 ButtonSavePlayers.hide();
-                ViewPlayers.hide();
+                DataTablePlayersWrapper.hide();
                 ButtonEditPlayers.show();
-            })
+            });
 
+
+            DataTablePlayers.on("click", ".js-add-player", function () {
+
+                var button = $(this);
+                $.ajax({
+                    url: "/api/test/addplayertotest/" + TableTest.attr("test_id") + "/" + button.attr("data-player-id"),
+                    method: "PUT",
+                    success: function () {
+                        console.log("Success");
+                        button.parents("tr").remove();
+                    }
+                });
+            });
         });
 
-        function SetPlayersInDropDownList(data) {
+
+        function CreateTableForPlayers(IsCreated, TablePlayers, DataTablePlayersWrapper) {
+            if (IsCreated) {
+
+                DataTablePlayersWrapper.show();
+                return true;
+
+            } else {
+
+                TablePlayers.show();
+                TablePlayers.DataTable({
+                    ajax: {
+                        url: "/api/player",
+                        dataSrc: ""
+                    },
+                    columns: [
+                        {
+                            data: "name"
+                        },
+                        {
+                            data: "address"
+                        },
+                        {
+                            data: "id",
+                            render: function (data, type, player) {
+                                return "<button class='btn-link js-add-player' data-player-id=" + data + ">Dodaj zawodnika</button>";
+                            }
+                        }
+                    ]
+
+                });
+                return true;
+            }
+            
         }
-    </script> 
+    </script>
 }

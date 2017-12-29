@@ -28,10 +28,10 @@ namespace myFootball.Models
         public int PlayerID { get; set; }
         public Player Player { get; set; }
 
-        public int ExamID { get; set; }
+        public int TestId { get; set; }
+        public Test Test { get; set; }
 
-        public int DyscyplineID { get; set; }
-        public Dyscypline Dyscypline { get; set; }
+        public int ExamID { get; set; }
 
         public double Score { get; set; }
 
