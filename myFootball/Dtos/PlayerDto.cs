@@ -1,4 +1,5 @@
-﻿using System;
+﻿using myFootball.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -60,9 +61,10 @@ namespace myFootball.Dtos
         public string XMLDefintion { get; set; } //probabbly unneccesery
     }
 
-    public class TestResultDto
+    public class TestResultForPlayerDto
     {
         public string Name { get; set; }
+        public List<Score> Scores = new List<Score>();
 
     }
 }

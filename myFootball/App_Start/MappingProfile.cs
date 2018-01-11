@@ -17,14 +17,14 @@ namespace myFootball.App_Start
             Mapper.CreateMap<Player, PlayerDto>();
             Mapper.CreateMap<Group, GroupDto>();
             Mapper.CreateMap<Test, TestDto>();
-            Mapper.CreateMap<TestResult, TestResultDto>();
+            Mapper.CreateMap<TestResultForPlayer, TestResultForPlayerDto>();
 
 
             //Dto to domain
             Mapper.CreateMap<TestDto, Test>()
                 .ForMember(t => t.Id, opt => opt.Ignore());
 
-            Mapper.CreateMap<TestResultDto, TestResult>();
+            Mapper.CreateMap<TestResultForPlayerDto, TestResultForPlayer>();
 
         }
     }

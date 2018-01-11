@@ -25,8 +25,25 @@ namespace myFootball.Controllers
         public ActionResult Index()
         {
 
-            IEnumerable<KindOfTest> variable = _context.KindOfTests.ToList();
-            return View(variable);
+            IEnumerable<KindOfTest> KindOfTests = _context.KindOfTests.ToList();
+            foreach (var kind in KindOfTests)
+            {
+                //load xml
+                //add information to model
+                string path = string.Format("{0}/{1}{2}", Server.MapPath("/XML"), kind.Id.ToString() + kind.Name, ".xml");
+
+                try
+                {
+                    kind.XMLDefintion = System.IO.File.ReadAllText(path);
+
+                } catch
+                {
+                    kind.XMLDefintion = "Problem z odczytaniem pliku xml z seerwera.";
+                }
+                
+
+            }
+            return View(KindOfTests);
 
         }
 

@@ -1,0 +1,7 @@
+﻿DELETE FROM Players
+DELETE FROM Dyscyplines
+DELETE FROM Groups
+DELETE FROM KindOfTests
+DELETE FROM Results
+DELETE FROM Tests
+DELETE FROM Units

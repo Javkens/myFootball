@@ -10,9 +10,18 @@ namespace myFootball
         {
             bundles.Add(new ScriptBundle("~/bundles/lib").Include(
                         "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery-{version}.min.js",
                         "~/Scripts/bootstrap.js",
+                        "~/Scripts/bootstrap.min.js",
                         "~/Scripts/bootbox.js",
                         "~/Scripts/respond.js",
+
+                        //datetimepicker
+                        "~/Scripts/moment.min.js",
+                        "~/Scripts/moment.js",
+                        "~/Scripts/bootstrap-datetimepicker.js",
+
+                        //datatable
                         "~/scripts/datatables/jquery.datatables.js",
                         "~/scripts/datatavles/datatables.bootstrap.js"));
 
@@ -27,6 +36,7 @@ namespace myFootball
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-lumen.css",
                       "~/content/datatables/css/datatables.bootstrap.css",
+                      "~/content/bootstrap-datetimepicker.css",
                       "~/Content/site.css"));
         }
     }

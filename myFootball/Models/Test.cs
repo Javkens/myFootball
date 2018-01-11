@@ -11,11 +11,11 @@ namespace myFootball.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
 
         public string City { get; set; }
 
-        public int KindOfTestID { get; set; }
+        public int KindOfTestId { get; set; }
         public KindOfTest KindOfTest { get; set; }
  
         public string GroundType { get; set; }
@@ -25,13 +25,14 @@ namespace myFootball.Models
     {
         public int Id { get; set; }
 
-        public int PlayerID { get; set; }
+        public int PlayerId { get; set; }
         public Player Player { get; set; }
 
         public int TestId { get; set; }
         public Test Test { get; set; }
 
-        public int ExamID { get; set; }
+        public int DyscyplineId { get; set; }
+        public Dyscypline Dyscypline { get; set; }
 
         public double Score { get; set; }
 

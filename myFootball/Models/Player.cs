@@ -16,7 +16,7 @@ namespace myFootball.Models
         public string Name { get; set; }
 
         [Display(Name = "Data urodzenia")]
-        public string Birthday { get; set; }
+        public DateTime Birthday { get; set; }
 
         [Display(Name = "Adres")]
         public string Address { get; set; }
@@ -25,7 +25,6 @@ namespace myFootball.Models
         public string Image { get; set; }
 
         public Group Group { get; set; }
-
         public int GroupId { get; set; }
     }
 

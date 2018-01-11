@@ -7,6 +7,9 @@
 }
 
 <h2>@Model.Test.Name</h2>
+<h3>@Model.Test.KindOfTest.Name</h3>
+Liczba dyscyplin: @Model.ListOfDyscyplines.Count()
+
 @*<h3>Data: @Model.Test.Date</h3>
     <h3>Id kind of test: @Model.Test.KindOfTestID.ToString()</h3>*@
 
@@ -76,6 +79,14 @@
                     dataSrc: ""
                 },
                 columns: [
+                    {
+                        data: "name",
+                    },                    {
+                        data: "name",
+                    },
+                    {
+                        data: "name",
+                    },
                     {
                         data: "name",
                     },
