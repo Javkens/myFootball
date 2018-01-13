@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<table class="table table-bordered table-hover">
+<table class="table table-bordered table-hover" id="tests">
     <thead>
         <tr>
             <th>#</th>
@@ -18,20 +18,55 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var m in Model)
-        {
-            <tr>
-                <td>@m.Id</td>
-                <td>@Html.ActionLink(m.Name, m.Id.ToString(), "Test")</td>
-                <td>@m.Date</td>
-                <td>@m.City</td>
-                <td> to do</td>
-                <td>TO DO</td>
-            </tr>
-        }
+        @*@foreach (var m in Model)
+            {
+                <tr>
+                    <td>@m.Id</td>
+                    <td>@Html.ActionLink(m.Name, m.Id.ToString(), "Test")</td>
+                    <td>@m.Date</td>
+                    <td>@m.City</td>
+                    <td> to do</td>
+                    <td>TO DO</td>
+                </tr>
+            }*@
     </tbody>
 </table>
 
 <p>
     @Html.ActionLink("Dodaj nowy test", "New", "Test", null, new { @class = "btn btn-primary" })
 </p>
+
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#tests").DataTable({
+                ajax: {
+                    url: "/api/test/index",
+                    method: "GET",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name"
+                        //tutaj zmienic na edycje grupy - na razie nie potrzebne
+                        //render: function(data, type, player) {
+                        //    return "<a href='/group/edit/'" + player.id + "'>" + player.name + "</a>";
+
+                        //}
+                    },
+                    {
+                        data: "city"
+                    },
+                    {
+                        data: "numberOfPlayers"
+                    }
+                ]
+
+            });
+        });
+    </script>
+
+}

@@ -22,9 +22,7 @@ namespace myFootball.Controllers
 
         public ActionResult Index()
         {
-            IEnumerable<Test> variable = _context.Tests.ToList();
-            return View(variable);
-
+            return View();
         }
 
 

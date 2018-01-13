@@ -24,6 +24,16 @@ namespace myFootball.Controllers.Api
         }
 
 
+        //GET api/test/index
+        [Route("api/test/index")]
+        [HttpGet]
+        public IHttpActionResult Index()
+        {
+            IEnumerable<Test> tests = _context.Tests.ToList();
+
+            return Ok(tests);
+
+        }
 
         //GET api/test
         [Route("api/test/{TestId}")]

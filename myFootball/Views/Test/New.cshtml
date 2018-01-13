@@ -17,15 +17,31 @@
         @Html.TextBoxFor(m => m.Test.Date, new { @class = "form-control" })
     </div>
 
+    @*@Html.LabelFor(m => m.Test.Date)*@
+    @*<div class="container">
+        <div class="row">
+            <div class='col-sm-6'>
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker'>
+                        @Html.TextBoxFor(m => m.Test.Date, new { @class = "form-control" })
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
     <div class="form-group">
         @Html.LabelFor(m => m.Test.City)
         @Html.TextBoxFor(m => m.Test.City, new { @class = "form-control" })
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.Test.KindOfTestID)
-        @Html.DropDownListFor(m => m.Test.KindOfTestID, new SelectList(Model.KindOfTests, "Id", "Name"), "", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Test.KindOfTestID)
+        @Html.LabelFor(m => m.Test.KindOfTestId)
+        @Html.DropDownListFor(m => m.Test.KindOfTestId, new SelectList(Model.KindOfTests, "Id", "Name"), "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Test.KindOfTestId)
     </div>
 
 
@@ -43,6 +59,9 @@
     <script>
 
         $(document).ready(function () {
+
+
+            //$('#datetimepicker').datetimepicker();
 
             $(".js-add-test").on("click", function () {
 
