@@ -11,15 +11,14 @@ namespace myFootball
             bundles.Add(new ScriptBundle("~/bundles/lib").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery-{version}.min.js",
+                        "~/Scripts/moment.js",
+                        "~/Scripts/moment.min.js",
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/bootstrap.min.js",
+                        "~/Scripts/bootstrap-datetimepicker.js",
                         "~/Scripts/bootbox.js",
                         "~/Scripts/respond.js",
-
-                        //datetimepicker
-                        "~/Scripts/moment.min.js",
-                        "~/Scripts/moment.js",
-                        "~/Scripts/bootstrap-datetimepicker.js",
+           
 
                         //datatable
                         "~/scripts/datatables/jquery.datatables.js",

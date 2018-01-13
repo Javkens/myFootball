@@ -30,13 +30,6 @@ namespace myFootball.Dtos
        // public Group Group { get; set; }
     }
 
-    public class GroupDto
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-
-    }
-
     public class TestDto
     {
 

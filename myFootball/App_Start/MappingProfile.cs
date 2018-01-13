@@ -20,6 +20,14 @@ namespace myFootball.App_Start
             Mapper.CreateMap<TestResultForPlayer, TestResultForPlayerDto>();
 
 
+            //Groups
+            Mapper.CreateMap<Group, GroupDto>();
+            Mapper.CreateMap<ViewGroupIndex, GroupIndexDto>();
+            Mapper.CreateMap<GroupDto, Group>();
+            Mapper.CreateMap<GroupIndexDto, ViewGroupIndex>();
+
+
+
             //Dto to domain
             Mapper.CreateMap<TestDto, Test>()
                 .ForMember(t => t.Id, opt => opt.Ignore());

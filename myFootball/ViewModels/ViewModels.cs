@@ -19,15 +19,6 @@ namespace myFootball.ViewModels
     }
 
 
-    public class GroupIndexView
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string City { get; set; }
-        public int NumberOfPlayers { get; set; }
-    }
-
-
     //dyscypline/add
     public class DyscyplineUnit
     {

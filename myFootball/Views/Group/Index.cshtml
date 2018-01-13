@@ -1,15 +1,11 @@
-﻿@model IEnumerable<myFootball.ViewModels.GroupIndexView>
-
-
-
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Grupy</h2>
 
-<table class="table table-bordered table-hover">
+<table class="table table-bordered table-hover" id="groups">
     <thead>
         <tr>
             <th>Nazwa grupy</th>
@@ -18,19 +14,44 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var group in Model)
-        {
-            <tr>
-                <td>@Html.ActionLink(group.Name, group.Id.ToString(), "Group")</td>
-                <td>@group.City</td>
-                <td>@group.NumberOfPlayers.ToString()</td>
-            </tr>
-        }
-
-
     </tbody>
 </table>
 
 <p>
     @Html.ActionLink("Dodaj nową grupę", "New", "Group", null, new { @class = "btn btn-primary" })
 </p>
+
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#groups").DataTable({
+                ajax: {
+                    url: "/api/group/index",
+                    method: "GET",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name"
+                        //tutaj zmienic na edycje grupy - na razie nie potrzebne
+                        //render: function(data, type, player) {
+                        //    return "<a href='/group/edit/'" + player.id + "'>" + player.name + "</a>";
+
+                        //}
+                    },
+                    {
+                        data: "city"
+                    },
+                    {
+                        data: "numberOfPlayers"
+                    }
+                ]
+
+            });
+        });
+    </script>
+
+}

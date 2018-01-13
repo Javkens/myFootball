@@ -22,11 +22,7 @@ namespace myFootball.Controllers
         public ActionResult Index()
         {
 
-            IEnumerable<DyscyplineUnit> query = (from d in _context.Dyscyplines
-                                                 join u in _context.Units on d.UnitId equals u.Id
-                                                 select new DyscyplineUnit { Dyscypline = d, Unit = u }).ToList();
-
-            return View(query);
+            return View();
 
         }
 

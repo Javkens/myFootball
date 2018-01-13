@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -16,7 +17,7 @@ namespace myFootball.Models
         public string Name { get; set; }
 
         [Display(Name = "Data urodzenia")]
-        public DateTime Birthday { get; set; }
+        public DateTime Birthday { get; set; } = DateTime.Now;
 
         [Display(Name = "Adres")]
         public string Address { get; set; }
@@ -24,15 +25,9 @@ namespace myFootball.Models
         [Display(Name = "Zdjęcie zawodnika")]
         public string Image { get; set; }
 
+        
         public Group Group { get; set; }
+        [Display(Name = "Grupa")]
         public int GroupId { get; set; }
-    }
-
-
-    public class Group
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string City { get; set; }
     }
 }
