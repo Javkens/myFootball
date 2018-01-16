@@ -54,7 +54,7 @@
         @Html.HiddenFor(m => m.Player.Id)
         @Html.AntiForgeryToken()
 
-        <button type="submit" class="btn btn-primary">Dodaj nowego zawodnika</button>
+        <button type="submit" class="btn btn-primary js-add-player">Dodaj nowego zawodnika</button>
     }
 </p>
 
@@ -67,6 +67,19 @@
         $(document).ready(function () {
 
             $('#datetimepicker').datetimepicker();
+
+            //$(".js-add-player").on("click", function () {
+
+            //    var button = $(this);
+            //    bootbox.confirm("Czy jestes pewien, że chcesz dodać nowego zawodnika?", function (result) {
+            //        if (result) {
+
+            //            console.log("Player will be added to database.");
+            //        }
+            //    });
+            //});
+
+
         });
 
     </script>

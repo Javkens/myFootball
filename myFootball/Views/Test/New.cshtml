@@ -17,6 +17,7 @@
         @Html.TextBoxFor(m => m.Test.Date, new { @class = "form-control" })
     </div>
 
+
     @Html.LabelFor(m => m.Test.Date)
     <div class="container">
         <div class="row">
@@ -61,7 +62,7 @@
         $(document).ready(function () {
 
 
-            //$('#datetimepicker').datetimepicker();
+            $('#datetimepicker').datetimepicker();
 
             $(".js-add-test").on("click", function () {
 
